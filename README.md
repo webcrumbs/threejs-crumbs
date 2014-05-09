@@ -1,7 +1,7 @@
 threejs-crumbs
 ==============
 
-Three.js crumbs
+Three.js crumbs based on an awesome book by ...
 
 
 
