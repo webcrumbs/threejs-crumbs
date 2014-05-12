@@ -12,12 +12,12 @@ threejs-crumbs
 4. [Materials, light and animation](examples/example04.html)
 5. [Control gui](examples/example05.html)
 6. [Axes helper](examples/example06.html)
-7. [Trackball camera, the world all aroud](examples/example07.html)
+7. [Trackball camera controls](examples/example07.html)
 8. [Camera helper](examples/example08.html)
 9. [Ambient Light](examples/example09.html)
 10. [Point Light](examples/example10.html)
-11. [Pointlight helper](examples/example11.html)
-12. [Spot Light](examples/example12.html)
+11. [Spot Light](examples/example11.html)
+12. [Spotlight helper](examples/example12.html)
 13. [Directional Light](examples/example13.html)
 14. [Mesh basic material](examples/example14.html)
 15. [Mesh face material](examples/example15.html)
@@ -68,7 +68,7 @@ threejs-crumbs
 Credits go to Jos Dirksen and his [Learning Three.js: the JavaScript 3D library for WebGL](http://www.amazon.com/Learning-Three-js-JavaScript-Library-WebGL/dp/1782166289/ref=sr_1_1?s=books&ie=UTF8&qid=1399655185&sr=1-1)
 
 Interesting links are:
-
+* [Three.js documentation](http://threejs.org/docs/)
 * [Learning Three.js examples](http://www.smartjava.org/content/all-109-examples-my-book-threejs-threejs-version-r63)
 * [Three.js extensions for games](http://www.threejsgames.com/extensions/)
 * [Useful examples](http://stemkoski.github.io/Three.js/)
