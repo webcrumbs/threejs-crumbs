@@ -6,26 +6,23 @@ threejs-crumbs
 
 ## Recipe
 
-01. [Basic skeleton](example/example01.html)
-02. [First Scene](examples/example02.html)
-03. [Materials and light](examples/example03.html)
-04. [Materials, light and animation](examples/example04.html)
-05. [Control gui](examples/example05.html)
-06. [Axes helper](examples/example06.html)
-07. [Trackball camera, the world all aroud](examples/example07.html)
-08. [Camera helper](examples/example08.html)
-      
-09. [Ambient Light](examples/example09.html)
+1. [Basic skeleton](example/example01.html)
+2. [First Scene](examples/example02.html)
+3. [Materials and light](examples/example03.html)
+4. [Materials, light and animation](examples/example04.html)
+5. [Control gui](examples/example05.html)
+6. [Axes helper](examples/example06.html)
+7. [Trackball camera, the world all aroud](examples/example07.html)
+8. [Camera helper](examples/example08.html)
+9. [Ambient Light](examples/example09.html)
 10. [Point Light](examples/example10.html)
 11. [Pointlight helper](examples/example11.html)
 12. [Spot Light](examples/example12.html)
 13. [Directional Light](examples/example13.html)
-      
 14. [Mesh basic material](examples/example14.html)
 15. [Mesh face material](examples/example15.html)
 16. [Mesh Lambert material](examples/example16.html)
 17. [Mesh Phong material](examples/example17.html)
-      
 18. [Basic 2D geometries - Plane](examples/example18.html)
 19. [Basic 2D geometries - Circle](examples/example19.html)
 20. [Basic 2D geometries - Shape](examples/example20.html)
@@ -37,21 +34,18 @@ threejs-crumbs
 26. [Extrude Geometry](examples/example26.html)
 27. [Parametric geometries](examples/example27.html)
 28. [Text geometry](examples/example28.html)
-      
 29. [Grouping](examples/example29.html)
 30. [Merge objects](examples/example30.html)
 31. [Save & Load](examples/example31.html)
 32. [Load and save scene](examples/example32.html)
 33. [Load OBJ model](examples/example33.html)
 34. [Load OBJ and MTL](examples/example34.html)
-      
 35. [Basic animations](examples/example35.html)
 36. [Selecting objects](examples/example36.html)
 37. [Animation tween](examples/example37.html)
 38. [Fly controls](examples/example38.html)
 39. [First person camera](examples/example39.html)
 40. [Path controls](examples/example40.html)
-      
 41. [Basic textures](examples/example41.html)
 42. [Bump maps](examples/example42.html)
 43. [UV mapping](examples/example43.html)
