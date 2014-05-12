@@ -65,7 +65,7 @@ threejs-crumbs
 
 ### Flour
 
-Credits go to Jos Dirksen and his [Learning Three.js: the JavaScript 3D library tfor WebGL](http://www.amazon.com/Learning-Three-js-JavaScript-Library-WebGL/dp/1782166289/ref=sr_1_1?s=books&ie=UTF8&qid=1399655185&sr=1-1)
+Credits go to Jos Dirksen and his [Learning Three.js: the JavaScript 3D library for WebGL](http://www.amazon.com/Learning-Three-js-JavaScript-Library-WebGL/dp/1782166289/ref=sr_1_1?s=books&ie=UTF8&qid=1399655185&sr=1-1)
 
 Interesting links are:
 
