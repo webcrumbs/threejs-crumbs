@@ -23,7 +23,7 @@
   <script src="http://cdnjs.cloudflare.com/ajax/libs/three.js/r67/three.min.js"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/stats.js/r11/Stats.min.js"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.5/dat.gui.min.js"></script>
-  <script src="assets/TrackballControls.js"></script>
+  <script src="assets/libs/TrackballControls.js"></script>
   <!-- Javascript code that runs our Three.js examples --> 
   <script>
     // once everything is loaded, we run our Three.js stuff.
@@ -38,7 +38,7 @@
       var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
 
       // create trackball controls
-      var trackbalControls = new THREE.TrackballControls(camera);
+      var trackballControls = new THREE.TrackballControls(camera);
 
       // create a render and set the size
       var renderer = new THREE.WebGLRenderer();
@@ -201,7 +201,7 @@
 
       function render() {
         stats.update();
-        trackbalControls.update();
+        trackballControls.update();
 
         // rotate the cube around its axes
         cube.rotation.x += controls.rotationSpeed;

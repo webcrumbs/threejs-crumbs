@@ -36,7 +36,7 @@ threejs-crumbs
 28. [Text geometry](examples/example28.html)
 29. [Grouping](examples/example29.html)
 30. [Merge objects](examples/example30.html)
-31. [Save & Load](examples/example31.html)
+31. [Load and save object](examples/example31.html)
 32. [Load and save scene](examples/example32.html)
 33. [Load OBJ model](examples/example33.html)
 34. [Load OBJ and MTL](examples/example34.html)
