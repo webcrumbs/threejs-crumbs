@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+  <title>Example 45 - Canvas texture</title> 
+  <style>
+    body{
+      margin: 0;
+      overflow: hidden;
+    }
+
+    #stats {  /* Align stats top-left */
+      position: absolute;
+      left: 0px;
+      top: 0px;
+    }
+
+    #canvas {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      border: 1px solid black;
+    }
+  </style>
+    <link href="assets/libs/literally/css/literally.css" rel="stylesheet">
+  </head>
+  <body>
+    <canvas id="canvas" width="200" height="200"></canvas>
+    <!-- JavaScript libraries -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> 
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/three.js/r67/three.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/stats.js/r11/Stats.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.5/dat.gui.min.js"></script>
+    <!-- Javascript code that runs our Three.js examples --> 
+    <script>
+      var $canvas, canvas, ctx2d;
+
+      var instructions = function () {
+        console.log('ctx2d.fillStyle = "rgb(200,0,0)"');  
+        console.log('ctx2d.fillRect(0, 0, 200, 200)');  
+        console.log('ctx2d.fillStyle = "rgb(50,50,50)"');
+        console.log('ctx2d.fillRect(5, 5, 30, 30)'); 
+        console.log('ctx2d.fillRect(50, 50, 150, 30)'); 
+      };
+
+      // once everything is loaded, we run our Three.js stuff.
+      $(function () {
+        $canvas = $('#canvas');
+        canvas = $canvas[0];
+        ctx2d = canvas.getContext('2d');
+
+        var stats = initStats();
+
+        // create a scene, that will hold all our elements such as objects, cameras and lights.
+        var scene = new THREE.Scene();
+
+        // create a camera, which defines where we're looking at.
+        var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+        // create a render and set the size
+        var webGLRenderer = new THREE.WebGLRenderer();
+        webGLRenderer.setClearColor(0xbbbbbb, 1.0);
+        webGLRenderer.setSize(window.innerWidth, window.innerHeight);
+
+        var cube = createMesh(new THREE.BoxGeometry(10, 10, 10), "floor-wood.jpg");
+        cube.position.x = 0;
+        scene.add(cube);
+
+        // position and point the camera to the center of the scene
+        camera.position.set(0,12,28)
+        camera.lookAt(new THREE.Vector3(0, 0, 0));
+
+        var ambiLight = new THREE.AmbientLight(0x141414)
+        scene.add(ambiLight);
+
+        var light = new THREE.DirectionalLight();
+        light.position.set(0, 30, 20);
+        scene.add(light);
+
+        // add the output of the renderer to the html element
+        $('body').append(webGLRenderer.domElement);
+
+        // call the render function
+        var step = 0;
+
+        // setup the control gui
+        var controls = new function () {
+
+          this.showTexture = true;
+
+          this.showCanvas = function () {
+            if (controls.showTexture) {
+              $canvas.show();
+            } else {
+              $canvas.hide();
+            }
+          }
+        };
+
+        var gui = new dat.GUI();
+        gui.add(controls, "showTexture").onChange(controls.showCanvas);
+
+
+        render();
+
+        function createMesh(geom) {
+          var canvasMap = new THREE.Texture(canvas);
+          var mat = new THREE.MeshPhongMaterial();
+          mat.map = canvasMap;
+          var mesh = new THREE.Mesh(geom, mat);
+          return mesh;
+        }
+
+        function render() {
+          stats.update();
+
+          cube.rotation.y += 0.01;
+          cube.rotation.x += 0.01;
+
+          cube.material.map.needsUpdate = true;
+
+          // render using requestAnimationFrame
+          requestAnimationFrame(render);
+          webGLRenderer.render(scene, camera);
+        }
+
+        function initStats() {
+          stats = new Stats();
+          stats.setMode(0); // 0: fps, 1: ms
+          $('body').append(stats.domElement);
+          return stats;
+        }
+      });
+    </script>
+    <script>
+      function drawSpade(ctx2d, x, y, width, height){
+        ctx2d.save();
+        var bottomWidth = width * 0.7;
+        var topHeight = height * 0.7;
+        var bottomHeight = height * 0.3;
+     
+        ctx2d.beginPath();
+        ctx2d.moveTo(x, y);
+     
+        // top left of spade          
+        ctx2d.bezierCurveTo(
+        x, y + topHeight / 2, // control point 1
+          x - width / 2, y + topHeight / 2, // control point 2
+          x - width / 2, y + topHeight // end point
+        );
+     
+        // bottom left of spade
+        ctx2d.bezierCurveTo(
+        x - width / 2, y + topHeight * 1.3, // control point 1
+          x, y + topHeight * 1.3, // control point 2
+          x, y + topHeight // end point
+        );
+     
+        // bottom right of spade
+        ctx2d.bezierCurveTo(
+        x, y + topHeight * 1.3, // control point 1
+          x + width / 2, y + topHeight * 1.3, // control point 2
+          x + width / 2, y + topHeight // end point
+        );
+     
+        // top right of spade
+        ctx2d.bezierCurveTo(
+        x + width / 2, y + topHeight / 2, // control point 1
+          x, y + topHeight / 2, // control point 2
+          x, y // end point
+        );
+     
+        ctx2d.closePath();
+        ctx2d.fillStyle = "black";
+        ctx2d.fill();
+     
+        // bottom of spade
+        ctx2d.beginPath();
+        ctx2d.moveTo(x, y + topHeight);
+        ctx2d.quadraticCurveTo(
+        x, y + topHeight + bottomHeight, // control point
+          x - bottomWidth / 2, y + topHeight + bottomHeight // end point
+        );
+        ctx2d.lineTo(x + bottomWidth / 2, y + topHeight + bottomHeight);
+        ctx2d.quadraticCurveTo(
+        x, y + topHeight + bottomHeight, // control point
+          x, y + topHeight // end point
+        );
+        ctx2d.closePath();
+        ctx2d.fillStyle = "black";
+        ctx2d.fill();
+        ctx2d.restore();
+    }
+     
+    function drawHeart(ctx2d, x, y, width, height){
+      ctx2d.save();
+        ctx2d.beginPath();
+      var topCurveHeight = height * 0.3;
+        ctx2d.moveTo(x, y + topCurveHeight);
+        // top left curve
+        ctx2d.bezierCurveTo(
+        x, y, 
+        x - width / 2, y, 
+        x - width / 2, y + topCurveHeight
+      );
+     
+        // bottom left curve
+        ctx2d.bezierCurveTo(
+        x - width / 2, y + (height + topCurveHeight) / 2, 
+        x, y + (height + topCurveHeight) / 2, 
+        x, y + height
+      );
+     
+        // bottom right curve
+        ctx2d.bezierCurveTo(
+        x, y + (height + topCurveHeight) / 2, 
+        x + width / 2, y + (height + topCurveHeight) / 2, 
+        x + width / 2, y + topCurveHeight
+      );
+     
+        // top right curve
+        ctx2d.bezierCurveTo(
+        x + width / 2, y, 
+        x, y, 
+        x, y + topCurveHeight
+      );
+     
+        ctx2d.closePath();
+        ctx2d.fillStyle = "red";
+        ctx2d.fill();
+      ctx2d.restore();
+    }
+     
+    function drawClub(ctx2d, x, y, width, height){
+      ctx2d.save();
+      var circleRadius = width * 0.3;
+      var bottomWidth = width * 0.5;
+      var bottomHeight = height * 0.35;
+        ctx2d.fillStyle = "black";
+     
+        // top circle
+        ctx2d.beginPath();
+        ctx2d.arc(
+        x, y + circleRadius + (height * 0.05), 
+        circleRadius, 0, 2 * Math.PI, false
+      );
+        ctx2d.fill();
+     
+        // bottom right circle
+        ctx2d.beginPath();
+        ctx2d.arc(
+        x + circleRadius, y + (height * 0.6), 
+        circleRadius, 0, 2 * Math.PI, false
+      );
+        ctx2d.fill();
+     
+        // bottom left circle
+        ctx2d.beginPath();
+        ctx2d.arc(
+        x - circleRadius, y + (height * 0.6), 
+        circleRadius, 0, 2 * Math.PI, false
+      );
+        ctx2d.fill();
+     
+        // center filler circle
+        ctx2d.beginPath();
+        ctx2d.arc(
+        x, y + (height * 0.5), 
+        circleRadius / 2, 0, 2 * Math.PI, false
+      );
+        ctx2d.fill();
+     
+        // bottom of club
+        ctx2d.moveTo(x, y + (height * 0.6));
+        ctx2d.quadraticCurveTo(
+        x, y + height, 
+        x - bottomWidth / 2, y + height
+      );
+        ctx2d.lineTo(x + bottomWidth / 2, y + height);
+        ctx2d.quadraticCurveTo(
+        x, y + height, 
+        x, y + (height * 0.6)
+      );
+        ctx2d.closePath();
+        ctx2d.fill();
+      ctx2d.restore();
+    }
+     
+    function drawDiamond(ctx2d, x, y, width, height){
+      ctx2d.save();
+        ctx2d.beginPath();
+        ctx2d.moveTo(x, y);
+     
+        // top left edge
+        ctx2d.lineTo(x - width / 2, y + height / 2);
+     
+        // bottom left edge
+        ctx2d.lineTo(x, y + height);
+     
+        // bottom right edge
+        ctx2d.lineTo(x + width / 2, y + height / 2);
+     
+        // closing the path automatically creates
+        // the top right edge
+        ctx2d.closePath();
+     
+        ctx2d.fillStyle = "red";
+        ctx2d.fill();
+      ctx2d.restore();
+    }
+     
+    var draw = function () {
+      drawSpade(ctx2d, 50, 5, 70, 85);
+      drawHeart(ctx2d, 150, 5, 70, 85);
+      drawClub(ctx2d, 50, 105, 70, 85);
+      drawDiamond(ctx2d, 150, 105, 70, 85);
+    };
+    </script>
+ </body>
+</html>
+

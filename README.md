@@ -69,7 +69,7 @@ Credits go to Jos Dirksen and his [Learning Three.js: the JavaScript 3D library 
 
 ### Tips
 
-[Static file server](/static-server)
+[Static file server](https://github.com/cvdlab/static-file-server)
 
 Interesting links are:
 * [Three.js documentation](http://threejs.org/docs/)
