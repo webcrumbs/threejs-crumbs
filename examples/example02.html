@@ -28,7 +28,6 @@
         var renderer = new THREE.WebGLRenderer();
 
         renderer.setClearColor(new THREE.Color(0xEEEEEE));
-
         renderer.setSize(window.innerWidth, window.innerHeight);
 
         // create the ground plane
@@ -48,7 +47,6 @@
         var cubeMaterial = new THREE.MeshBasicMaterial({color: 0xff0000, wireframe: true});
         var cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
 
-
         // position the cube
         cube.position.set(4,3,0);
 
@@ -61,7 +59,6 @@
 
         // position the sphere
         sphere.position.set(20,4,2);
-
 
         // add the sphere to the scene
         scene.add(sphere);
