@@ -1,7 +1,7 @@
 threejs-crumbs
 ==============
 
-[Three.js](http://threejs.org/) crumbs based on "Learning Three.js: the JavaScript 3D library tfor WebGL" by [Jos Dirksen](https://github.com/josdirksen)
+[Three.js](http://threejs.org/) crumbs based on "Learning Three.js: the JavaScript 3D library for WebGL" by [Jos Dirksen](https://github.com/josdirksen)
 
 
 ## Recipe
