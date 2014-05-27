@@ -6,7 +6,7 @@ threejs-crumbs
 
 ## Recipe
 
-1. [Basic skeleton](example/example01.html)
+1. [Basic skeleton](examples/example01.html)
 2. [First Scene](examples/example02.html)
 3. [Materials and light](examples/example03.html)
 4. [Materials, light and animation](examples/example04.html)
