@@ -1,12 +1,12 @@
 threejs-crumbs
 ==============
 
-[Three.js](http://threejs.org/) crumbs based on "Learning Three.js: the JavaScript 3D library tfor WebGL" by [Jos Dirksen](https://github.com/josdirksen)
+[Three.js](http://threejs.org/) crumbs based on "Learning Three.js: the JavaScript 3D library for WebGL" by [Jos Dirksen](https://github.com/josdirksen)
 
 
 ## Recipe
 
-1. [Basic skeleton](example/example01.html)
+1. [Basic skeleton](examples/example01.html)
 2. [First Scene](examples/example02.html)
 3. [Materials and light](examples/example03.html)
 4. [Materials, light and animation](examples/example04.html)
