@@ -114,11 +114,11 @@
       // set shadow properties - try to change these values
       spotLight.castShadow = true;
       spotLight.shadowCameraNear = 2;
-      spotLight.shadowCameraFar = 30;
+      spotLight.shadowCameraFar = 70;
       spotLight.shadowCameraFov = 70;
       spotLight.shadowDarkness = 0.5;
-      spotLight.shadowMapWidth = 256;
-      spotLight.shadowMapHeight = 256;
+      spotLight.shadowMapWidth = 128;
+      spotLight.shadowMapHeight = 128;
       spotLight.shadow;
 
       scene.add(spotLight);
@@ -258,12 +258,12 @@
         renderer.render(scene, camera);
     }
 
-      function initStats() {
-        var stats = new Stats();
-        stats.setMode(0); // 0: fps, 1: ms
-        $('body').append(stats.domElement);
-        return stats;
-      }
+    function initStats() {
+      var stats = new Stats();
+      stats.setMode(0); // 0: fps, 1: ms
+      $('body').append(stats.domElement);
+      return stats;
+    }
   });
   </script>  
  </body>

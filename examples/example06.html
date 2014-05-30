@@ -43,7 +43,7 @@
       // create the ground plane
       var planeGeometry = new THREE.PlaneGeometry(60,20);
       var planeMaterial =  new THREE.MeshLambertMaterial({color: 0xffffff});
-      var plane = new THREE.Mesh(planeGeometry,planeMaterial);
+      plane = new THREE.Mesh(planeGeometry,planeMaterial);
 
       // rotate and position the plane
       plane.rotation.x=-0.5*Math.PI;

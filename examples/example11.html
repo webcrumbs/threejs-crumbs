@@ -130,7 +130,7 @@
 
       // used to determine the switch point for the light animation
       var invert = 1;
-      var phase = 0;
+      var alpha = 0;
 
       var controls = new function () {
         this.rotationSpeed = 0.03;
@@ -210,14 +210,14 @@
 
         // move the light simulation
         if (!stopMovingLight) {
-          if (phase > 2 * Math.PI) {
+          if (alpha > 2 * Math.PI) {
             invert = invert * -1;
-            phase -= 2 * Math.PI;
+            alpha -= 2 * Math.PI;
           } else {
-            phase += controls.rotationSpeed;
+            alpha += controls.rotationSpeed;
           }
-          sphereLightMesh.position.z = +(7 * (Math.sin(phase)));
-          sphereLightMesh.position.x = +(14 * (Math.cos(phase)));
+          sphereLightMesh.position.z = +(7 * (Math.sin(alpha)));
+          sphereLightMesh.position.x = +(14 * (Math.cos(alpha)));
 
           if (invert < 0) {
             var pivot = 14;
@@ -229,7 +229,6 @@
 
         // render using requestAnimationFrame
         requestAnimationFrame(render);
-
         renderer.render(scene, camera);
       }
 
