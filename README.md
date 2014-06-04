@@ -79,3 +79,7 @@ Interesting links are:
 * [ShaderToy](https://www.shadertoy.com)
 * [Tween.js](https://github.com/sole/tween.js/)
 * [HTML5 Canvas 2D context APIs](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D)
+
+## Appendices
+
+1. [Joint](appendices/joint.html)
