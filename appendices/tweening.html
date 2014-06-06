@@ -99,25 +99,20 @@
       // add the output of the renderer to the html element
       $('body').append(renderer.domElement);
 
-      //define animations
       var cubeTweenBack = new TWEEN.Tween(cube.position)
-        .to({ x: -4, y: 3, z: 0 }, 2000);
+        .to({x: -4, y: 3, z: 0}, 2000)
+        .easing(TWEEN.Easing.Quadratic.InOut);
 
       var cubeTween = new TWEEN.Tween(cube.position)
-        .to({ x: -16, y: 3, z: -7 }, 2000)
-        // .easing(TWEEN.Easing.Linear.None)
+        .to({x: -13, y: 3, z: -5}, 4000)
         .easing(TWEEN.Easing.Bounce.Out)
-        .chain(cubeTweenBack)  
-        .start();
-      
-      var h = 8;
-      var dz = 3;
-      var sphereScale = new TWEEN.Tween(sphere.scale)
-        .to({x: 1, y: 1-dz/h, z: 1}, 1000)
-        .easing(TWEEN.Easing.Bounce.Out)
+        .chain(cubeTweenBack)
         .start();
 
-
+      var sphereTween = new TWEEN.Tween(sphere.position)
+        .to({x:0, y: 3, z:0}, 1000)
+        .delay(1000)
+        .start();
 
       // call the render function
       render();

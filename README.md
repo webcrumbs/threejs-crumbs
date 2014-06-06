@@ -78,6 +78,7 @@ Interesting links are:
 * [Useful examples](http://stemkoski.github.io/Three.js/)
 * [ShaderToy](https://www.shadertoy.com)
 * [Tween.js](https://github.com/sole/tween.js/)
+* [Tween.js - easing functions](http://sole.github.io/tween.js/examples/03_graphs.html)
 * [HTML5 Canvas 2D context APIs](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D)
 
 ## Appendices
