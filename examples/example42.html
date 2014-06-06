@@ -39,7 +39,7 @@
       webGLRenderer.setClearColor(0xEEEEEE, 1.0);
       webGLRenderer.setSize(window.innerWidth, window.innerHeight);
 
-      var sphere1 = createMesh(new THREE.BocGeometry(15, 15, 2), "stone.jpg");
+      var sphere1 = createMesh(new THREE.BoxGeometry(15, 15, 2), "stone.jpg");
       sphere1.rotation.y = -0.5;
       sphere1.position.x = 12;
       scene.add(sphere1);

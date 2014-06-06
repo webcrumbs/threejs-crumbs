@@ -59,10 +59,11 @@
       }
 
       function init() {
+        var points = generatePoints(16,8,42,12);
+
         camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 1000 );
         controls = new THREE.PathControls( camera );
 
-        var points = generatePoints(16,8,42,12);
 
         controls.waypoints = points;
         controls.duration = 80
@@ -84,7 +85,6 @@
 
       
         // add some objects to understand movements
-
         var geometry = new THREE.CylinderGeometry( 0, 10, 30, 4, 1 );
         var material =  new THREE.MeshLambertMaterial( { color:0xffffff, shading: THREE.FlatShading } );
 
@@ -143,7 +143,6 @@
         light = new THREE.AmbientLight( 0x222222 );
         scene.add( light );
 
-
         // renderer
         renderer = new THREE.WebGLRenderer( { antialias: false } );
         renderer.setClearColor( scene.fog.color, 1 );
@@ -151,17 +150,16 @@
 
         $('body').append( renderer.domElement );
 
-
-
         // start animation
         controls.animation.play( true, 0 );
 
       }
 
       function animate() {
+        stats.update();
+        
         requestAnimationFrame( animate );
         render();
-        stats.update();
       }
 
       function render() {

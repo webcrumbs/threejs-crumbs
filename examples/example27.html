@@ -90,8 +90,8 @@
         return new THREE.Vector3(x, y, z);
       }
 
-      var mesh = createMesh(new THREE.ParametricGeometry(klein, 20, 20, false));
-      // var mesh = createMesh(new THREE.ParametricGeometry(radialWave, 20, 20, false));
+      // var mesh = createMesh(new THREE.ParametricGeometry(klein, 20, 20));
+      var mesh = createMesh(new THREE.ParametricGeometry(radialWave, 20, 20));
       scene.add(mesh);
 
       render();

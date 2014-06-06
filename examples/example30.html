@@ -55,11 +55,8 @@
 
       var cubeMaterial = new THREE.MeshNormalMaterial({color: 0x00ff00, transparent: true, opacity: 0.5 });
       var controls = new function () {
-        this.cameraNear = camera.near;
-        this.cameraFar = camera.far;
         this.rotationSpeed = 0.02;
         this.combined = false;
-
         this.numberOfObjects = 500;
 
         this.redraw = function () {

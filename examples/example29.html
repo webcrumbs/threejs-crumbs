@@ -239,11 +239,11 @@
         object.traverse(function (node) {
           if (node.geometry !== undefined && node.geometry.vertices !== undefined) {
             var vertices = node.geometry.vertices;
-            for (var i = 0, il = vertices.length; i < il; i++) {
-              v1.copy(vertices[ i ]);
+            vertices.forEach(function (vertex) {
+              v1.copy(vertex);
               v1.applyMatrix4(node.matrixWorld);
               box.expandByPoint(v1);
-            }
+            });
           }
         });
         return box;

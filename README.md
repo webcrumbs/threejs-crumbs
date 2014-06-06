@@ -82,4 +82,6 @@ Interesting links are:
 
 ## Appendices
 
-1. [Joint](appendices/joint.html)
+A. [Joint](appendices/joint.html)
+B. [Tweening](appendices/tweening.html)
+C. [KeyFrame](appendices/keyframe.html)
