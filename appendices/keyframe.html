@@ -22,6 +22,7 @@
   <script src="http://cdnjs.cloudflare.com/ajax/libs/three.js/r67/three.min.js"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/stats.js/r11/Stats.min.js"></script>
   <script src="../examples/assets/libs/TrackballControls.js"></script>
+  <script src="../examples/assets/libs/tween.min.js"></script>
   <script src="../examples/assets/libs/keyframe.js"></script>
   <!-- Javascript code that runs our Three.js examples --> 
   <script>
@@ -102,25 +103,37 @@
       //define animations
       var animator = null;
       var duration = 4; // sec
-      var loopAnimation = false;
+      var loopAnimation = true;
 
       function initAnimator() {
-        animator = new KF.KeyFrameAnimator;
+        animator = new KF.KeyFrameAnimator();
         animator.init({ 
           interps:
             [
               { 
-                keys:[0, .2, 1], 
+                keys:[0, .2, .8, 1], 
+                values:[
+                  { z : 0, x: 0},
+                  { z : Math.PI, x: 0  },
+                  { z : 5*Math.PI / 4, x : 0  },
+                  { z : Math.PI * 2, x: Math.PI * 2 },
+                ],
+                target: cube.rotation
+              },
+              { 
+                keys:[0, .3, .8, 1], 
                 values:[
                   { z : 0 },
-                  { z : Math.PI  },
-                  { z : Math.PI * 2 },
+                  { z : -3 },
+                  { z : 5 },
+                  { z : 6 },
                 ],
-                target:cube.rotation
+                target: cube.position
               },
             ],
           loop: loopAnimation,
-          duration: duration * 1000
+          duration: duration * 1000,
+          easing: TWEEN.Easing.Bounce.Out
         });
       }
 
