@@ -74,13 +74,21 @@
 
       var loader = new THREE.OBJLoader();
       loader.load('assets/models/lar_test.obj', function (obj) {
-        o = obj;
-        var material = new THREE.MeshLambertMaterial({color: 0xaaaaaa});
-        material.side = THREE.DoubleSide;
 
-        obj.children[0].material = material
+        global_o = obj;
 
-        mesh = obj.children[0];
+        // var material = new THREE.MeshLambertMaterial({color: 0xaaaaaa});
+        // material.side = THREE.DoubleSide;
+        // obj.children[0].material = material;
+        // mesh = obj.children[0];
+
+        var multiMaterial = [
+          new THREE.MeshLambertMaterial({color: 0xaaaaaa, side: THREE.DoubleSide, shading: THREE.FlatShading}),
+          new THREE.MeshBasicMaterial({wireframe: true, overdraw: true, color: 0xffffff, side: THREE.DoubleSide})
+          ];
+
+        mesh = THREE.SceneUtils.createMultiMaterialObject(obj.children[0].geometry, multiMaterial);
+          
         scene.add(mesh);
       });
 
