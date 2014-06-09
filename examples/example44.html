@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
  <head> 
-  <title>Example 42 - Repeat wrapping</title> 
+  <title>Example 44 - UV mapping</title> 
   <style>
     body{
       margin: 0;
@@ -21,10 +21,11 @@
   <script src="http://cdnjs.cloudflare.com/ajax/libs/three.js/r67/three.js"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/stats.js/r11/Stats.min.js"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.5/dat.gui.min.js"></script>
+  <script src="assets/libs/OBJLoader.js"></script> 
   <!-- Javascript code that runs our Three.js examples --> 
   <script>
     // once everything is loaded, we run our Three.js stuff.
-    $(function () {
+    $(function () { 
       var stats = initStats();
 
       // create a scene, that will hold all our elements such as objects, cameras and lights.
@@ -35,28 +36,18 @@
 
       // create a render and set the size
       var webGLRenderer = new THREE.WebGLRenderer();
-      webGLRenderer.setClearColorHex(0xEEEEEE, 1.0);
+      webGLRenderer.setClearColor(0xffffff, 1.0);
       webGLRenderer.setSize(window.innerWidth, window.innerHeight);
 
-      var sphere = createMesh(new THREE.SphereGeometry(5, 20, 20), "floor-wood.jpg");
-      scene.add(sphere);
-      sphere.position.x = 7;
-
-      var cube = createMesh(new THREE.BoxGeometry(6, 6, 6), "brick-wall.jpg");
-      cube.position.x = -7;
-      scene.add(cube);
-      console.log(cube.geometry.faceVertexUvs);
-
       // position and point the camera to the center of the scene
-      camera.position.set(0,12,20);
+      camera.position.set(-30,40,50);
       camera.lookAt(new THREE.Vector3(0, 0, 0));
 
-      var ambiLight = new THREE.AmbientLight(0x141414)
-      scene.add(ambiLight);
-
-      var light = new THREE.DirectionalLight();
-      light.position.set(0, 30, 20);
-      scene.add(light);
+      // add spotlight for the shadows
+      var spotLight = new THREE.SpotLight(0xffffff);
+      spotLight.position.set(-30, 60, 50);
+      spotLight.intensity = 1.5;
+      scene.add(spotLight);
 
       // add the output of the renderer to the html element
       $('body').append(webGLRenderer.domElement);
@@ -66,69 +57,69 @@
 
       // setup the control gui
       var controls = new function () {
-        this.repeatX = 1;
-        this.repeatY = 1;
-        this.repeatWrapping = true;
+        // we need the first child, since it's a multimaterial
+        this.loadCube1 = function () {
+          var loader = new THREE.OBJLoader();
+          loader.load('assets/models/UVCube1.obj', function (geometry) {
+            if (mesh) { scene.remove(mesh); }
+            var material = new THREE.MeshLambertMaterial({color: 0xffffff});
+            var texture = THREE.ImageUtils.loadTexture("assets/textures/ash_uvgrid01.jpg");
+            material.map = texture;
 
-        this.updateRepeat = function (e) {
-          cube.material.map.repeat.set(controls.repeatX, controls.repeatY);
-          sphere.material.map.repeat.set(controls.repeatX, controls.repeatY);
+            geometry.children[0].children[0].material = material;
+            geometry.children[0].children[1].material = material;
 
-          if (controls.repeatWrapping) {
-            cube.material.map.wrapS = THREE.RepeatWrapping;
-            cube.material.map.wrapT = THREE.RepeatWrapping;
-            sphere.material.map.wrapS = THREE.RepeatWrapping;
-            sphere.material.map.wrapT = THREE.RepeatWrapping;
-          } else {
-            cube.material.map.wrapS = THREE.ClampToEdgeWrapping;
-            cube.material.map.wrapT = THREE.ClampToEdgeWrapping;
-            sphere.material.map.wrapS = THREE.ClampToEdgeWrapping;
-            sphere.material.map.wrapT = THREE.ClampToEdgeWrapping;
-          }
+            mesh = geometry;
+            geometry.scale.set(15, 15, 15);
+            scene.add(geometry);
+          });
+        };
 
-          cube.material.map.needsUpdate = true;
-          sphere.material.map.needsUpdate = true;
-        }
-      };
+        this.loadCube2 = function () {
+          var loader = new THREE.OBJLoader();
+          loader.load('assets/models/UVCube2.obj', function (geometry) {
+            if (mesh) { scene.remove(mesh); }
+            var material = new THREE.MeshLambertMaterial({color: 0xffffff});
+            var texture = THREE.ImageUtils.loadTexture("assets/textures/ash_uvgrid01.jpg");
+            material.map = texture;
 
+            geometry.children[0].children[0].material = material;
+            geometry.children[0].children[1].material = material;
+
+            mesh = geometry;
+            geometry.scale.set(15, 15, 15);
+            geometry.rotation.x = -0.3;
+
+            out = mesh;
+
+            scene.add(geometry);
+          });
+        };
+
+      }
 
       var gui = new dat.GUI();
-      gui.add(controls, "repeatX", -4, 4).onChange(controls.updateRepeat);
-      gui.add(controls, "repeatY", -4, 4).onChange(controls.updateRepeat);
-      gui.add(controls, "repeatWrapping").onChange(controls.updateRepeat);
+      gui.add(controls, 'loadCube1');
+      gui.add(controls, 'loadCube2');
+      var mesh;
 
+      controls.loadCube1();
 
       render();
 
-      function createMesh(geom, texture) {
-        var texture = THREE.ImageUtils.loadTexture("assets/textures/general/" + texture)
-        texture.wrapS = THREE.RepeatWrapping;
-        texture.wrapT = THREE.RepeatWrapping;
-
-        geom.computeVertexNormals();
-        var mat = new THREE.MeshPhongMaterial();
-        mat.map = texture;
-
-
-        // create a multimaterial
-        var mesh = new THREE.Mesh(geom, mat);
-
-        return mesh;
-      }
 
       function render() {
         stats.update();
-        step += 0.01;
-        cube.rotation.y = step;
-        cube.rotation.x = step;
-        sphere.rotation.y = step;
-        sphere.rotation.x = step;
+
+        if (mesh) {
+          mesh.rotation.y += 0.006;
+          mesh.rotation.x += 0.006;
+        }
 
         // render using requestAnimationFrame
         requestAnimationFrame(render);
         webGLRenderer.render(scene, camera);
       }
-
       function initStats() {
         stats = new Stats();
         stats.setMode(0); // 0: fps, 1: ms

@@ -46,13 +46,14 @@ threejs-crumbs
 38. [Fly controls](examples/example38.html)
 39. [First person camera](examples/example39.html)
 40. [Path controls](examples/example40.html)
-41. [Basic textures](examples/example41.html)
-42. [Bump maps](examples/example42.html)
-43. [UV mapping](examples/example43.html)
-44. [Repeat wrapping](examples/example44.html)
-45. [Canvas texture](examples/example45.html)
-46. [Canvas texture bumpmap](examples/example46.html)
-47. [Video texture](examples/example47.html)
+41. [Pointer Lock controls](examples/example41.html)
+42. [Basic textures](examples/example41.html)
+43. [Bump maps](examples/example42.html)
+44. [UV mapping](examples/example44.html)
+45. [Repeat wrapping](examples/example45.html)
+46. [Canvas texture](examples/example46.html)
+47. [Canvas texture bumpmap](examples/example47.html)
+48. [Video texture](examples/example48.html)
 
 ### Bakers
 

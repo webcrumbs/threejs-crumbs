@@ -117,9 +117,6 @@
       gui.add(controls, 'rotationSpeed', 0, 0.5);
       gui.add(controls, 'bouncingSpeed', 0, 0.5);
       gui.add(controls, 'scalingSpeed', 0, 0.5);
-      gui.add(controls, 'showRay').onChange(function (e) {
-        if (tube) scene.remove(tube)
-      });
 
       render();
 
@@ -155,6 +152,7 @@
       function onDocumentMouseDown(event) {
         event.preventDefault();
 
+        // map viewport coordinates in ([-1,1], [-1,1], 0.5)
         var vector = new THREE.Vector3(( event.clientX / window.innerWidth ) * 2 - 1, -( event.clientY / window.innerHeight ) * 2 + 1, 0.5);
         projector.unprojectVector(vector, camera);
 
@@ -165,23 +163,6 @@
         if (intersects.length > 0) {
           intersects[ 0 ].object.material.transparent = true;
           intersects[ 0 ].object.material.opacity = 0.1;
-
-          var points = [];
-          var origin = raycaster.ray.origin.clone();
-          console.log(origin);
-          points.push(new THREE.Vector3(-30, 39.8, 30));
-          points.push(intersects[0].point);
-
-
-          var mat = new THREE.MeshBasicMaterial({color: 0xff0000, transparent: true, opacity: 0.6});
-          var tubeGeometry = new THREE.TubeGeometry(new THREE.SplineCurve3(points), 60, 0.001);
-
-          if (tube) scene.remove(tube);
-
-          if (controls.showRay) {
-            tube = new THREE.Mesh(tubeGeometry, mat);
-            scene.add(tube);
-          }
         }
       }
 

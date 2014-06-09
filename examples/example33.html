@@ -68,22 +68,19 @@
       var mesh;
 
       var loader = new THREE.OBJLoader();
-      loader.load('assets/models/pinecone.obj', function (geometry) {
-        var material = new THREE.MeshLambertMaterial({color: 0x5C3A21});
+      loader.load('assets/models/pinecone.obj', function (obj) {
+        var material = new THREE.MeshLambertMaterial({color: 0x5C3A21, shading: THREE.FlatShading});
 
-        // geometry is a group of children. If a child has one additional child it's probably a mesh
-        geometry.children.forEach(function (child) {
-          if (child.children.length == 1) {
-            if (child.children[0] instanceof THREE.Mesh) {
-              child.children[0].material = material;
-            }
+        obj.traverse(function (child) {
+          if (child instanceof THREE.Mesh) {
+            child.material = material;
           }
         });
 
-        mesh = geometry;
-        geometry.scale.set(100, 100, 100);
-        geometry.rotation.x = -0.3;
-        scene.add(geometry);
+        mesh = obj;
+        obj.scale.set(100, 100, 100);
+        obj.rotation.x = -0.3;
+        scene.add(obj);
       });
 
       render();
