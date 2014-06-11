@@ -80,10 +80,12 @@ Interesting links are:
 * [ShaderToy](https://www.shadertoy.com)
 * [Tween.js](https://github.com/sole/tween.js/)
 * [Tween.js - easing functions](http://sole.github.io/tween.js/examples/03_graphs.html)
+* [Simple OBJ Exporter](https://github.com/cvdlab-cg/428798/tree/master/OBJExporter)
 * [HTML5 Canvas 2D context APIs](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D)
+* [Object picking](http://mrdoob.github.io/three.js/examples/webgl_interactive_draggablecubes.html)
 
 ## Appendices
 
-A. [Joint](appendices/joint.html)
-B. [Tweening](appendices/tweening.html)
-C. [KeyFrame](appendices/keyframe.html)
+A. [Joint](appendices/joint.html)   
+B. [Tweening](appendices/tweening.html)   
+C. [KeyFrame](appendices/keyframe.html)   

@@ -35,7 +35,7 @@
 
       // create a render and set the size
       var webGLRenderer = new THREE.WebGLRenderer();
-      webGLRenderer.setClearColorHex(0xEEEEEE, 1.0);
+      webGLRenderer.setClearColor(0xEEEEEE, 1.0);
       webGLRenderer.setSize(window.innerWidth, window.innerHeight);
 
       var sphere = createMesh(new THREE.SphereGeometry(5, 20, 20), "floor-wood.jpg");
@@ -109,8 +109,6 @@
         var mat = new THREE.MeshPhongMaterial();
         mat.map = texture;
 
-
-        // create a multimaterial
         var mesh = new THREE.Mesh(geom, mat);
 
         return mesh;

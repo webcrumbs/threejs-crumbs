@@ -70,6 +70,8 @@
 
       function createMesh(geom, imageFile) {
         var texture = THREE.ImageUtils.loadTexture("assets/textures/general/" + imageFile)
+        // var mat = new THREE.MeshBasicMaterial();
+        // var mat = new THREE.MeshLambertMaterial();
         var mat = new THREE.MeshPhongMaterial();
         mat.map = texture;
 

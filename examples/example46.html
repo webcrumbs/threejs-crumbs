@@ -307,11 +307,24 @@
       ctx2d.restore();
     }
      
-    var draw = function () {
+    var drawShapes = function () {
+      ctx2d.fillStyle = "rgb(128,128,128)"; 
+      ctx2d.fillRect(0, 0, 200, 200);
       drawSpade(ctx2d, 50, 5, 70, 85);
       drawHeart(ctx2d, 150, 5, 70, 85);
       drawClub(ctx2d, 50, 105, 70, 85);
       drawDiamond(ctx2d, 150, 105, 70, 85);
+    };
+
+    var drawText = function () {
+      ctx2d.fillStyle = "rgb(128,128,128)"; 
+      ctx2d.fillRect(0, 0, 200, 200);
+      ctx2d.fillStyle = "rgb(64,252,128)";
+      ctx2d.strokeStyle = "rgb(64,252,128)";
+      ctx2d.font="50px Helvetica";
+      ctx2d.strokeText("CVDLab", 6, 100);
+      ctx2d.font="12px Helvetica";
+      ctx2d.fillText('play today with the web of tomorrow', 4, 135);
     };
     </script>
  </body>

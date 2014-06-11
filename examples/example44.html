@@ -60,39 +60,35 @@
         // we need the first child, since it's a multimaterial
         this.loadCube1 = function () {
           var loader = new THREE.OBJLoader();
-          loader.load('assets/models/UVCube1.obj', function (geometry) {
+          loader.load('assets/models/UVCube1.obj', function (obj) {
             if (mesh) { scene.remove(mesh); }
             var material = new THREE.MeshLambertMaterial({color: 0xffffff});
             var texture = THREE.ImageUtils.loadTexture("assets/textures/ash_uvgrid01.jpg");
             material.map = texture;
 
-            geometry.children[0].children[0].material = material;
-            geometry.children[0].children[1].material = material;
+            obj.children[0].material = material;
 
-            mesh = geometry;
-            geometry.scale.set(15, 15, 15);
-            scene.add(geometry);
+            mesh = obj;
+            mesh.scale.set(15, 15, 15);
+            scene.add(mesh);
           });
         };
 
         this.loadCube2 = function () {
           var loader = new THREE.OBJLoader();
-          loader.load('assets/models/UVCube2.obj', function (geometry) {
+          loader.load('assets/models/UVCube2.obj', function (obj) {
             if (mesh) { scene.remove(mesh); }
             var material = new THREE.MeshLambertMaterial({color: 0xffffff});
             var texture = THREE.ImageUtils.loadTexture("assets/textures/ash_uvgrid01.jpg");
             material.map = texture;
 
-            geometry.children[0].children[0].material = material;
-            geometry.children[0].children[1].material = material;
+            obj.children[0].material = material;
 
-            mesh = geometry;
-            geometry.scale.set(15, 15, 15);
-            geometry.rotation.x = -0.3;
+            mesh = obj;
+            mesh.scale.set(15, 15, 15);
+            mesh.rotation.x = -0.3;
 
-            out = mesh;
-
-            scene.add(geometry);
+            scene.add(mesh);
           });
         };
 
