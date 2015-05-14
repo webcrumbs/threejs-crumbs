@@ -17,7 +17,7 @@ threejs-crumbs
 9. [Ambient light](examples/example09.html)
 10. [Point light](examples/example10.html)
 11. [Spot light](examples/example11.html)
-12. [Spot light shodow](examples/example12.html)
+12. [Spot light shadow](examples/example12.html)
 13. [Directional light](examples/example13.html)
 14. [Mesh basic material](examples/example14.html)
 15. [Mesh face material](examples/example15.html)
